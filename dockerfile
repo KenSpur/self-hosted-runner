@@ -21,13 +21,13 @@ RUN cd /home/docker && mkdir actions-runner && cd actions-runner \
 RUN chown -R docker ~docker && /home/docker/actions-runner/bin/installdependencies.sh
 
 # add over the start.sh script
-ADD scripts/start.sh start.sh
+ADD scripts/entrypoint.sh entrypoint.sh
 
 # make the script executable
-RUN chmod +x start.sh
+RUN chmod +x entrypoint.sh
 
 # set the user to "docker" so all subsequent commands are run as the docker user
 USER docker
 
 # set the entrypoint to the start.sh script
-ENTRYPOINT ["./start.sh"]
+ENTRYPOINT ["./entrypoint.sh"]
